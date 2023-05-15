@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Shoe from "./Component/shoe";
+import Cart from "./Component/Cart";
 
-function App() {
+function App(props) {
+  const [cart, setCart] = useState(false);
+  // const event = useRef();
+
+  const showCart = () => {
+    setCart(true);
+  };
+  const closeCart = () => {
+    setCart(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {cart && <Cart closeCart={closeCart} />}
+      <Shoe showCart={showCart} />
+    </>
   );
 }
 
